@@ -1,32 +1,15 @@
-import { renderListWithTemplate } from './utils.mjs';
+// In src/utils.mjs
 
-function productCardTemplate(product) {
-    return `
-    <li class="product-card">
-      <a href="product_pages/index.html?product=${product.id}">
-        <img src="${product.image}" alt="${product.name} image">
-        <h3 class="card__brand">${product.brand.name}</h3>
-        <h2 class="card__name">${product.name}</h2>
-        <p class="product-card__price">$${product.finalPrice}</p>
-      </a>
-    </li>
-  `;
+export function renderListWithTemplate(templateFn, parentElement, list, position = 'afterbegin', clear = false) {
+  if (clear) {
+    parentElement.innerHTML = '';
+  }
+  const htmlStrings = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
 
-export default class ProductList {
-    constructor(category, dataSource, listElement) {
-        this.category = category;
-        this.dataSource = dataSource;
-        this.listElement = listElement;
-    }
-
-    async init() {
-        const list = await this.dataSource.getData();
-        this.renderList(list);
-    }
-
-    renderList(list) {
-        renderListWithTemplate(productCardTemplate, this.listElement, list);
-    }
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
 }
-// THIS COURSE IS GOING TO BE DIFFICULT
