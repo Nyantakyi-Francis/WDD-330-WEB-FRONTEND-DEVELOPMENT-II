@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4f46e5;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #4338ca;
+        }
+
+        .message-box {
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+    <div class="container space-y-6">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Login</h1>
+            <p class="text-gray-600">Enter your credentials to access the order management system.</p>
+        </div>
+
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" id="email" name="email" required
+                    class="mt-1 form-input">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password" name="password" required
+                    class="mt-1 form-input">
+            </div>
+            <div id="messageBox" class="message-box hidden" role="alert"></div>
+            <button type="submit" class="submit-button">Log In</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageBox = document.getElementById('messageBox');
+            messageBox.classList.add('hidden');
+
+            // --- START Simulated API Call ---
+            // This section simulates a network request for testing purposes.
+            // In a real application, you would replace this entire block
+            // with a real fetch call to your server.
+            const simulatedResponse = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (email === 'test@example.com' && password === 'password123') {
+                        // Simulate a successful response with a mock token
+                        resolve({
+                            ok: true,
+                            json: () => Promise.resolve({
+                                message: 'Login successful!',
+                                token: 'mock-auth-token-12345'
+                            })
+                        });
+                    } else {
+                        // Simulate a failed response
+                        resolve({
+                            ok: false,
+                            json: () => Promise.resolve({
+                                message: 'Invalid email or password.'
+                            })
+                        });
+                    }
+                }, 1000); // Simulate a 1-second network delay
+            });
+            // --- END Simulated API Call ---
+
+            try {
+                const response = await simulatedResponse;
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    messageBox.textContent = 'Login successful! Token received.';
+                    messageBox.classList.remove('hidden');
+                    messageBox.classList.add('bg-green-100', 'text-green-700');
+                    // In a real app, you would save the token and redirect the user
+                    console.log('Login successful! Token:', result.token);
+                    // Example: window.location.href = 'orders.html';
+                } else {
+                    messageBox.textContent = result.message || 'Invalid email or password. Please try again.';
+                    messageBox.classList.remove('hidden');
+                    messageBox.classList.add('bg-red-100', 'text-red-700');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                messageBox.textContent = 'An error occurred. Please try again later.';
+                messageBox.classList.remove('hidden');
+                messageBox.classList.add('bg-red-100', 'text-red-700');
+            }
+        });
+    </script>
+</body>
+
+</html>
