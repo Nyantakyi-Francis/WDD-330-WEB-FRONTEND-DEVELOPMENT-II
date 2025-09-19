@@ -309,3 +309,22 @@ footer {
 .newsletter-signup button:hover {
   background-color: #4338ca;
 }
+
+.categories-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.categories-list img {
+  width: 600px;
+  height: auto;
+}
+
+/* This new rule sets the size for the product images */
+.product-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}

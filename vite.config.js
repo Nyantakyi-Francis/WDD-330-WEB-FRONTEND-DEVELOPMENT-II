@@ -4,6 +4,28 @@ import { defineConfig } from "vite";
 export default defineConfig({
   root: "src/",
 
+  
+  server: {
+    proxy: {
+      "/tents": {
+        target: "http://127.0.0.1:3000",
+        changeOrigin: true,
+      },
+      "/backpacks": {
+        target: "http://127.0.0.1:3000",
+        changeOrigin: true,
+      },
+      "/sleeping-bags": {
+        target: "http://127.0.0.1:3000",
+        changeOrigin: true,
+      },
+      "/hammocks": {
+        target: "http://127.0.0.1:3000",
+        changeOrigin: true,
+      },
+    },
+  },
+
   build: {
     outDir: "../dist",
     rollupOptions: {
