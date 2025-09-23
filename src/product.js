@@ -1,5 +1,5 @@
 import { getParam } from './utils.mjs';
-import ProductData from './js/ProductData.mjs';
+import ExternalServices from './js/ExternalServices.mjs';
 
 function productTemplate(product) {
     return `
@@ -56,7 +56,7 @@ class ProductDetails {
     }
 }
 
-const dataSource = new ProductData('tents');
+const dataSource = new ExternalServices('tents');
 const productId = getParam('product');
 const product = new ProductDetails(productId, dataSource);
 product.init();
