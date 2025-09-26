@@ -1,63 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Sign Up</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/signup.js" type="module"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="divider" id="main-header"></header>
 
     <main class="divider">
-        <section class="signup-page">
-            <h2>Create Your Account</h2>
+      <section class="signup-page">
+        <h2>Create Your Account</h2>
 
-            <div id="signup-message" class="alert-box hide" tabindex="-1"></div>
+        <div id="signup-message" class="alert-box hide" tabindex="-1"></div>
 
-            <form name="signup" class="signup-form">
+        <form name="signup" class="signup-form">
+          <fieldset>
+            <legend>Personal Details</legend>
 
-                <fieldset>
-                    <legend>Personal Details</legend>
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" required />
+            <p class="alert" id="name-error"></p>
 
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" required>
-                    <p class="alert" id="name-error"></p>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required />
+            <p class="alert" id="email-error"></p>
 
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" required>
-                    <p class="alert" id="email-error"></p>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required />
+            <p class="alert" id="password-error"></p>
 
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" required>
-                    <p class="alert" id="password-error"></p>
+            <label for="address">Street Address</label>
+            <input type="text" name="address" id="address" required />
+            <p class="alert" id="address-error"></p>
 
-                    <label for="address">Street Address</label>
-                    <input type="text" name="address" id="address" required>
-                    <p class="alert" id="address-error"></p>
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" required />
+            <p class="alert" id="city-error"></p>
 
-                    <label for="city">City</label>
-                    <input type="text" name="city" id="city" required>
-                    <p class="alert" id="city-error"></p>
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" required />
+            <p class="alert" id="state-error"></p>
 
-                    <label for="state">State</label>
-                    <input type="text" name="state" id="state" required>
-                    <p class="alert" id="state-error"></p>
+            <label for="zip">Zip Code</label>
+            <input type="text" name="zip" id="zip" required />
+            <p class="alert" id="zip-error"></p>
+          </fieldset>
 
-                    <label for="zip">Zip Code</label>
-                    <input type="text" name="zip" id="zip" required>
-                    <p class="alert" id="zip-error"></p>
-                </fieldset>
-
-                <button type="submit" id="signupSubmit">Sign Up</button>
-            </form>
-        </section>
+          <button type="submit" id="signupSubmit">Sign Up</button>
+        </form>
+      </section>
     </main>
 
     <footer id="main-footer"></footer>
-</body>
-
+  </body>
 </html>
