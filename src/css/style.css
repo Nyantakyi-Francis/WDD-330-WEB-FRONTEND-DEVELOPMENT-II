@@ -308,3 +308,48 @@ footer {
     border-top: 1px solid var(--tertiary-color);
     padding: 1em;
 }
+
+/* * --- New Error Checking and Validation Styles --- 
+ * Styles added for the W04 Individual Activity 
+ */
+
+/* 1. Style for field-specific error messages (client-side validation) */
+.alert {
+    color: #cc0000;
+    /* Darker red text for high contrast */
+    font-size: var(--small-font);
+    padding: 0.1rem 0;
+    margin: 0;
+    line-height: 1.2;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* 2. Style for the general error box (server errors - #checkout-errors) */
+.alert-box {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 2px solid #a94442;
+    /* Dark red border */
+    background-color: #fce8e8;
+    /* Light pink background for alert */
+    color: #a94442;
+    /* Dark red text */
+    border-radius: 5px;
+}
+
+.alert-box h3 {
+    margin-top: 0;
+    font-size: var(--large-font);
+    margin-bottom: 0.5rem;
+}
+
+.alert-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+/* 3. Utility class to hide elements by default, used by CheckoutProcess.mjs */
+.hide {
+    display: none;
+}
